@@ -1,0 +1,32 @@
+{
+    "rules": [
+        {
+            "ruleName": "BIRTH DATE Format Transformation",
+            "ruleId": "1",
+            "executionOrder": 1,
+            "rulesData": {
+                "expression": "SELECT {cols},CASE WHEN LENGTH({cond_col1}) = 8 THEN CONCAT(SUBSTRING({cond_col1}, 5, 2), '/', SUBSTRING({cond_col1}, 7, 2), '/', SUBSTRING({cond_col1}, 1, 4)) ELSE {update_col1} END AS {update_col1} FROM MOD_POC_MEM_LD",
+                "params": {
+                    "update_cols": {
+                        "update_col1": "Birth Date"
+                    },
+                    "cond_cols": {"cond_col1": "Birth Date"}
+                }
+            }
+        },
+        {
+            "ruleName": "Output file Structure",
+            "ruleId": "2",
+            "executionOrder": 2,
+            "rulesData": {
+            "expression": "SELECT \"Member ID\", \"First Name\", \"Last Name\", \"ADDRESS STREET 1\" as \"Address 1\", \"ADDRESS STREET 2\" as\"Address 2\", \"City\", \"State\", \"ZIP Code\", \"Email Address\", \"Phone Number\", \"Birth Date\", \"Gender\", \"Number of Members\", \"Plan State\", \"Spoken Language\" FROM MOD_POC_MEM_LD",
+                 "params": {
+                    "update_cols": {
+                    },
+                    "cond_cols": {
+                    }
+                }
+            }
+        }
+    ]
+}
